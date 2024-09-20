@@ -1,0 +1,203 @@
+﻿@page
+@using Microsoft.AspNetCore.Components
+@model Restaurante.Pages.CardapioModel
+@{
+    ViewData["Title"] = "Cardapio";
+
+    var professor = Model.x;
+    var titulo = Model.x;
+}
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+</head>
+
+<div class="testee" >
+
+    <div class="row mt-4" style="margin:5px">
+        @for (int i = 0; i < professor.Count; i++)
+        {
+            var y = professor[i];
+                  <div class="testee">
+                    <div class="BLoO">
+                    <img src="@y.ImagemUrl" class="img-fluid movie-image" alt="">
+                </div>
+
+                <div class="textcenteer">
+                    <div style="display:flex; flex-direction:column; justify-content:center; align-items: center; margin-top: 4rem;">
+                        @Html.Raw(y.Titulo)
+                        @Html.Raw(y.Descricao)
+                    
+                       
+                    </div>
+                </div>
+            </div>
+        }
+   
+   
+    <div class="container" style="display:flex; justify-content:space-between ; align-content:center; margin:20px; ">
+        <h2 style="color: white;">Selecione o seu prato: </h2>
+
+       
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="buscarDados('https://localhost:7093/api/Restaurante/1')">Salmão Grelhado</button>
+
+       
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="buscarDados('https://localhost:7093/api/Restaurante/2')">Risoto de Cogumelos</button>
+
+
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="buscarDados('https://localhost:7093/api/Restaurante/3')" id="02" value="https://localhost:7093/api/Restaurante/3">Filé Mignon ao Molho </button>
+
+        
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pedido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" id="01" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="container mt-4">
+                            <h1 style="font-size:60px">Essência Gourmet</h1>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <div id="resultado" style="margin-top: 20px; font-size:40px"></div>
+                        </div>
+
+                        <script>
+                            const modalBtn = document.getElementById('01');
+                            modalBtn.disabled = true;
+
+                            async function buscarDados(url) {
+                                try {
+                                    const response = await fetch(url); // Chama a API com a URL passada
+
+                                    if (!response.ok) {
+                                        throw new Error(`Erro: ${response.status}`);
+                                    }
+
+                                    const dados = await response.json(); // Converte a resposta para JSON
+                                    document.getElementById("resultado").innerHTML = `
+
+                                                        <p><strong>Nome:</strong> ${dados.nome}</p>
+                                                        <p><strong>Status:</strong> ${dados.situacao}</p>
+                                                        <p><strong>Valor:</strong> ${dados.valor}</p>
+                                                    `;
+
+
+                                } catch (error) {
+                                    console.error('Erro ao buscar dados:', error);
+                                    document.getElementById("resultado").innerHTML = `<p>Erro ao buscar dados.</p>`;
+                                }
+
+                            } if (dados.situacao == "Pronto") {
+                                modalBtn.disabled = false;
+                            }
+                          
+
+                        
+                        </script>
+
+
+                            <div class="tela"></div>
+                           
+                        </div>
+
+                    </div>
+
+
+                    
+                </div>
+            </div>
+        </div>
+
+       
+
+    </div>
+
+
+
+<script>
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<style>
+
+    .testee {
+        display: flex;
+        background-color: black;
+        margin: 10px;
+        justify-content:center;
+       
+        
+       
+    }
+    .BLoO  {
+       
+        justify-content: center;
+        align-items: center;
+       
+       
+        color: white; /* Cor do texto */
+        text-align: center;
+        
+    }
+    .BLoO img{
+        height:24rem;
+        width: 24rem;
+        justify-content: center;
+        border-radius: 10px 0px 0px 10px;
+        
+        
+    }
+
+    .textcenteer{
+        max-width:30rem;
+        background-color: white;
+        height: inherit;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+        padding:1%;
+        border-radius: 0px 10px 10px 0px;
+    }
+
+
+    h1 {
+        color: #6A1B9A; /* Cor do título */
+        font-size: 24px; /* Tamanho do título */
+        margin-bottom: 20px; /* Espaço abaixo do título */
+        text-align:left;
+    }
+
+    p {
+        margin-bottom: 15px; /* Espaço entre os parágrafos */
+        text-align:center;
+    }
+
+    strong {
+        color: #D32F2F; /* Cor para o texto em negrito */
+    }
+
+
+
+/* Animations */
+
+
+
+
+</style>

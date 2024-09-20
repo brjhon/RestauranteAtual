@@ -1,0 +1,89 @@
+﻿@page
+@model Restaurante.Pages.IndexModel
+@{
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Restaurante.styles.css" asp-append-version="true" />
+</head>
+
+<section class="home" id="home">
+    <div class="home-content">
+        <h1><span>Essência Gourmet</span></h1>
+        <div class="text-animate">
+            <h3>Onde o Sabor se Encontra com a Sofisticação</h3>
+        </div>
+        <p>Descubra uma experiência culinária inigualável com a Essência Gourmet. Cada prato é uma obra de arte, cuidadosamente preparada com ingredientes selecionados para oferecer uma explosão de sabores e texturas. Nossa missão é transformar cada refeição em um momento inesquecível, combinando tradição e inovação em receitas que encantam os paladares mais exigentes.</p>
+        <div class="btn-box">
+            <a asp-page="/Cardapio" class="btn">Ver Cardápio</a>
+
+        </div>
+    </div>
+</section>
+
+<header>
+    <style>
+
+
+        .home {
+            height: 80vh; /* Define a altura como 100% da altura da viewport */
+            /* Define a largura como 100% da largura da viewport */
+            display: grid;
+            margin-top: 1%;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://invexo.com.br/blog/wp-content/uploads/2023/01/olivo-cucina-e-pizzeria-restaurantes-jardim-oceanico-rio-de-janeiro-1024x679.jpg');
+            background-size: cover; /* Faz a imagem cobrir toda a área */
+            background-position: center;
+            color: white; /* Cor do texto */
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .home-content {
+            width: auto; /* Largura máxima do conteúdo */
+            /* Espaçamento interno */
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para melhorar a legibilidade */
+            border-radius: 20px; /* Cantos arredondados */
+            height: auto;
+            background-position: center;
+            margin-left: auto;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+        }
+
+            .home-content h1 {
+                align-items: center;
+            }
+
+            .home-content h3 {
+                align-items: center;
+            }
+
+            .home-content p {
+                align-items: center;
+            }
+
+        .btn-box {
+            margin-top: 40px; /* Espaçamento acima dos botões */
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px; /* Espaçamento entre os botões */
+            padding: 10px 20px; /* Espaçamento interno dos botões */
+            background-color: black; /* Cor do botão */
+            color: white; /* Cor do texto do botão */
+            text-decoration: none; /* Remover sublinhado */
+            border-radius: 5px; /* Cantos arredondados do botão */
+            transition: background-color 0.3s; /* Efeito de transição */
+        }
+
+            .btn:hover {
+                background-color: transparent; /* Cor do botão ao passar o mouse */
+                color: white;
+            }
+    </style>
+</header>
